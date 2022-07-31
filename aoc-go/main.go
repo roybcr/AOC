@@ -25,7 +25,7 @@ func parseLine(line string) dict {
 	direction 	 := instructions[0]
 	
 	if err != nil {
-		log.Fatal("There is a huge blunder")
+		log.Fatal("blunder")
 	}
 
 	switch direction {
