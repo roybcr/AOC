@@ -1,13 +1,10 @@
+type Point = [number, number];
+
 const getInput = () => {
-    return `forward 5
-down 5
-forward 8
-up 3
-down 8
-forward 2`;
+    return 'forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2';
 };
 
-function parseLine(line: string): [number, number] {
+function parseLine(line: string): Point {
     const [dir, a]: string[] = line.split(' ');
     const amount: number = +a;
 
@@ -21,11 +18,11 @@ function parseLine(line: string): [number, number] {
     }
 }
 
-const out: [number, number] = getInput()
+const out: Point = getInput()
     .split('\n')
     .map((x: string) => parseLine(x))
     .reduce(
-        (acc: [number, number], amount: [number, number]) => {
+        (acc: Point, amount: Point) => {
             acc[0] += amount[0];
             acc[1] += amount[1];
             return acc;

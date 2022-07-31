@@ -7,18 +7,16 @@ import (
 	"strings"
 )
 
-func getInput() string {
-	return `forward 5
-down 5
-forward 8
-up 3
-down 8
-forward 2`
+type Point struct {
+	x int
+	y int
 }
 
-type dict = [2]int
+func getInput() string {
+	return "forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2"
+}
 
-func parseLine(line string) dict {
+func parseLine(line string) Point {
 
 	instructions := strings.Split(line, " ")
 	val, err     := strconv.Atoi(instructions[1])
@@ -31,26 +29,26 @@ func parseLine(line string) dict {
 	switch direction {
 
 		case "forward":
-			return dict{val, 0}
+			return Point{x: val, y: 0}
 
 		case "up":
-			return dict{0, -val}
+			return Point{x: 0, y: -val}
 
 		default:
-			return dict{0, val}
+			return Point{x: 0, y: val }
 
 	}
 }
 
 func main() {
 
-	lines := dict{0, 0}
+	lines := Point{0, 0}
 
 	for _, line := range strings.Split(getInput(), "\n") {
 		parsed := parseLine(line)
-		lines[0] += parsed[0]
-		lines[1] += parsed[1]
+		lines.x += parsed.x
+		lines.y += parsed.y
 	}
 
-	fmt.Printf("%+v, %d\n", lines, lines[0] * lines[1])
+	fmt.Printf("%+v, %d\n", lines, lines.x * lines.y)
 }

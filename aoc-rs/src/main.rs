@@ -14,9 +14,9 @@ fn parse_line(line: &str) -> Point {
     let amount: i32 = str::parse::<i32>(amount).expect("second arg must be an integer");
 
     match dir {
-        "forward" => Point { x: amount, y: 0  },
         "up"      => Point { x: 0, y: -amount },
         "down"    => Point { x: 0, y: amount  },
+        "forward" => Point { x: amount, y: 0  },
         _         => Point { x: 0, y: 0       },
     }
 }
