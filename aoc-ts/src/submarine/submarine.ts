@@ -18,16 +18,18 @@ function parseLine(line: string): Point {
     }
 }
 
-const out: Point = getInput()
-    .split('\n')
-    .map((x: string) => parseLine(x))
-    .reduce(
-        (acc: Point, amount: Point) => {
-            acc[0] += amount[0];
-            acc[1] += amount[1];
-            return acc;
-        },
-        [0, 0]
-    );
+export function submarine() {
+  const out: Point = getInput()
+      .split('\n')
+      .map((x: string) => parseLine(x))
+      .reduce(
+          (acc: Point, amount: Point) => {
+              acc[0] += amount[0];
+              acc[1] += amount[1];
+              return acc;
+          },
+          [0, 0]
+      );
 
-console.log(out, out[0] * out[1]);
+  console.log(out, out[0] * out[1]);
+}
